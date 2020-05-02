@@ -28,4 +28,8 @@ export class TaskService {
   createTask(table: TableModel, tableId: string) {
     return this.db.doc('tables/' + tableId).update(table)
   }
+
+  deleteTask(table: TableModel) {
+    return this.db.doc('tables/' + table.id).update(table)
+  }
 }

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="card board">
         <div class="card-header"> 
-            <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">+ Nova Tabela</button>
+            <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal">+ Nova Tabela</button>
         </div>
         <div 
             class="card-body board-body" 
@@ -27,9 +27,9 @@
                         </div>
                     </div>
                     <div class="card-body" cdkDropList (cdkDropListDropped)="dropTask($event)">
-                        <div class="card" *ngFor="let task of table.tasks" cdkDrag>
-                            <div class="card-header">
-                                <button type="button" class="close btn-sm" aria-label="Close" (click)="dropItem(task)">
+                        <div class="card task" *ngFor="let task of table.tasks" cdkDrag>
+                            <div class="card-header task-header">
+                                <button type="button" class="close btn-sm" aria-label="Close" (click)="dropItem(task, table.id)">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>

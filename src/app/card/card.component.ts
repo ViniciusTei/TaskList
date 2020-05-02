@@ -37,6 +37,7 @@ export class CardComponent implements OnInit {
       
   }
 
+  //metodos drop e dropTask sao para o drag'n'drop 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -49,8 +50,8 @@ export class CardComponent implements OnInit {
     
   }
 
-  dropTask(event) {
-    console.log(event);
+  dropTask(event: any) {
+    console.log();
 
   }
 
@@ -77,9 +78,12 @@ export class CardComponent implements OnInit {
     //this.tables = this.tables.filter(x => x != table);
   }
 
-  dropItem(item: string) {
-    //this.tasks = this.tasks.filter(x => x != item);
-    console.log(item);
+  dropItem(item: string, tableId: string) {
+    let table = this.tables.filter(table =>  table.id == tableId)[0];
+    table.tasks = table.tasks.filter(x => x != item);
+
+    this._firebase.deleteTask(table)
+      .then(res =>  console.log('Task deleted!'))
     
   }
 

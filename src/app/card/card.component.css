@@ -4,6 +4,8 @@
 
 .board {
     height: 100%;
+    margin-top: 20px;
+    background-color: rgba(128, 128, 128, 0.3);
 }
 
 .board-body {
@@ -15,6 +17,14 @@
 .table {
     width: 280px;
     margin: 0 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.task {
+    margin-bottom: 5px;
+}
+.task-header {
+    height: 40px;
 }
 
 .cdk-drag-animating {
