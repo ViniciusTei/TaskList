@@ -12,10 +12,15 @@
     display: flex;
     flex-direction: row;
     flex-grow: 1;
+    max-width: 100%;
+    overflow-x: auto;
 }
 
 .table {
-    width: 280px;
+    overflow-y: auto;
+    height: 440px;
+    max-height: 440px;
+    min-width: 280px;
     margin: 0 20px;
     background-color: rgba(0, 0, 0, 0.2);
 }

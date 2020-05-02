@@ -51,7 +51,7 @@ export class CardComponent implements OnInit {
   }
 
   dropTask(event: any) {
-    console.log();
+    console.log(event);
 
   }
 
@@ -60,6 +60,7 @@ export class CardComponent implements OnInit {
       .then(
         result => {
           console.log(result);
+          this.novaTabela = "";
           alert('Tabela criada');
         }
       )
@@ -92,6 +93,7 @@ export class CardComponent implements OnInit {
     table.tasks.push(this.novaTarefa);
     this._firebase.createTask(table, table.id)
       .then(res => {
+        this.novaTarefa = "";
         console.log('Tarefa adicionada')
       })
   }
