@@ -1,0 +1,103 @@
+<div class="container">
+    <div class="card board">
+        <div class="card-header"> 
+            <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">+ Nova Tabela</button>
+        </div>
+        <div 
+            class="card-body board-body" 
+            cdkDropList
+            [cdkDropListData]="tables"
+            cdkDropListOrientation="horizontal" 
+            (cdkDropListDropped)="drop($event)" >
+                <div class="card table" *ngFor="let table of tables" cdkDrag>
+                    <div class="card-header">
+                        <div class="container">
+                            <div class="row justify-content-between">
+                                {{table.name}}
+                                <div>
+                                    <button type="button" class="btn btn-sm" aria-label="Create" data-toggle="modal" data-target="#myModal2" (click)="setTableId(table.id)">
+                                        <fa-icon [icon]="plus"></fa-icon>
+                                    </button>
+                                    <button type="button" class="close btn-sm" aria-label="Close" (click)="dropTable(table)">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body" cdkDropList (cdkDropListDropped)="dropTask($event)">
+                        <div class="card" *ngFor="let task of table.tasks" cdkDrag>
+                            <div class="card-header">
+                                <button type="button" class="close btn-sm" aria-label="Close" (click)="dropItem(task)">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                {{task}}
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <!-- The Modal -->
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+            <div class="modal-content">
+            
+                <!-- Modal Header -->
+                <div class="modal-header">
+                <h4 class="modal-title">Digite o nome da tabela</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Tabela" (keyup)="onKeyup($event, true)">
+                        <div class="input-group-append">
+                          <button class="btn btn-success" type="submit" (click)="onCriarTabela()">Salvar</button>
+                        </div>
+                      </div>
+                </div>
+                
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+                
+            </div>
+            </div>
+        </div>
+        <!--My second modal-->
+        <div class="modal" id="myModal2">
+            <div class="modal-dialog">
+            <div class="modal-content">
+            
+                <!-- Modal Header -->
+                <div class="modal-header">
+                <h4 class="modal-title">Digite a descrição da terefa</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Descrição" (keyup)="onKeyup($event, false)">
+                        <div class="input-group-append">
+                          <button class="btn btn-success" type="submit" (click)="onCriarTarefa()">Salvar</button>
+                        </div>
+                      </div>
+                </div>
+                
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+                
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
